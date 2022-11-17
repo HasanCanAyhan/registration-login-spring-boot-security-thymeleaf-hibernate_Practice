@@ -3,7 +3,10 @@ package com.cydeo.web.controller;
 import com.cydeo.service.UserService;
 import com.cydeo.web.dto.UserRegistrationDto;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -17,10 +20,22 @@ public class UserRegistrationController {
         this.userService = userService;
     }
 
+    @ModelAttribute("user") // it will go to in the registration.html line:45
+    public UserRegistrationDto userRegistrationDto() {
+        return new UserRegistrationDto();
+    }
 
+
+    @GetMapping("/get")
+    public String showRegistrationForm(){
+        return "registration";
+    }
+
+
+    @PostMapping
     public String registerUserAccount(@ModelAttribute("user")UserRegistrationDto registrationDto){
         userService.save(registrationDto);
-        return "redirect:/registration?success";
+        return "redirect:/registration?success"; // in the registration.html line:38
     }
 
 
