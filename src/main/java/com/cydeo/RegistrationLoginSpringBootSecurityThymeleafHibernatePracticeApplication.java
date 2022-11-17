@@ -10,4 +10,6 @@ public class RegistrationLoginSpringBootSecurityThymeleafHibernatePracticeApplic
 		SpringApplication.run(RegistrationLoginSpringBootSecurityThymeleafHibernatePracticeApplication.class, args);
 	}
 
+	//link : https://youtu.be/L9oWG6aj_U8
+
 }
